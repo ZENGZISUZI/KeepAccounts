@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_start"
+            android:title="开始记账" />
+        <item
+            android:id="@+id/nav_today"
+            android:title="今日账单" />
+        <item
+            android:id="@+id/nav_allacount"
+            android:title="所有账单" />
+        <item
+            android:id="@+id/nav_send"
+            android:title="记账统计" />
+        <item
+            android:id="@+id/nav_sum"
+            android:title="总额" />
+    </group>
+    <!--<item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+        </menu>
+    </item>-->
+</menu>
