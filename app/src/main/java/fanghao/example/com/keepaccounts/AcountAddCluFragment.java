@@ -29,13 +29,14 @@ import fanghao.example.com.keepaccounts.entity.Acount;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link AcountAddFragment.OnFragmentInteractionListener} interface
+ * {@link AcountAddCluFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link AcountAddFragment#newInstance} factory method to
+ * Use the {@link AcountAddCluFragment#newInstance} factory method to
  * create an instance of this fragment.
+ * 添加账单页面功能处理
  */
-@ContentView(R.layout.fragment_acount_add)
-public class AcountAddFragment extends BaseFragment {
+@ContentView(R.layout.fragment_acount_add_clu)
+public class AcountAddCluFragment extends BaseFragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -64,7 +65,7 @@ public class AcountAddFragment extends BaseFragment {
     final String TYPE_INCOME = "0";
     final String TYPE_EXPENSE = "1";
 
-    public AcountAddFragment() {
+    public AcountAddCluFragment() {
         // Required empty public constructor
     }
 
@@ -135,7 +136,7 @@ public class AcountAddFragment extends BaseFragment {
         });
         builder.show();
     }
-
+//收入类型的数据添加
     @Event(R.id.income)
     private void onIncomeClick(View view) {
         boolean i = true;
@@ -155,7 +156,7 @@ public class AcountAddFragment extends BaseFragment {
         if (i)
             Toast.makeText(getActivity(), "记账收入成功", Toast.LENGTH_SHORT).show();
     }
-
+    //支出类型的数据添加
     @Event(R.id.expense)
     private void onExpenseClick(View view) {
         boolean i = true;
@@ -183,11 +184,11 @@ public class AcountAddFragment extends BaseFragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment AcountAddFragment.
+     * @return A new instance of fragment IncomeAddFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static AcountAddFragment newInstance(String param1, String param2) {
-        AcountAddFragment fragment = new AcountAddFragment();
+    public static AcountAddCluFragment newInstance(String param1, String param2) {
+        AcountAddCluFragment fragment = new AcountAddCluFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -209,7 +210,7 @@ public class AcountAddFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_acount_add, null);
+        View root = inflater.inflate(R.layout.fragment_acount_add_clu, null);
        /*  figure = (EditText) root.findViewById(R.id.figure);
         remarks = (EditText) root.findViewById(R.id.remarks);
 

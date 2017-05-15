@@ -40,7 +40,7 @@ import fanghao.example.com.keepaccounts.notimportant.DemoBase;
  *
  * @author Philipp Jahoda
  */
-public class ListViewMultiChartActivity extends DemoBase {
+public class ListViewMonthActivity extends DemoBase {
     DbManager.DaoConfig daoConfig = new DbManager.DaoConfig()
             .setDbName("myAcounts")
                     //.setDbDir(new File("/data/data/fanghao.example.com.keepaccounts"))
@@ -65,13 +65,10 @@ public class ListViewMultiChartActivity extends DemoBase {
         mTintManager.setStatusBarTintEnabled(true);
         mTintManager.setStatusBarTintResource(R.color.status_bar_color);
         setTitle("账单视图");
-        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);*/
-      /*  getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);*/
-        setContentView(R.layout.activity_listview_chart);
 
-        lv = (ListView) findViewById(R.id.listView1);
+        setContentView(R.layout.activity_listview_month);
+
+        lv = (ListView) findViewById(R.id.lv_month);
 
         ArrayList<ChartItem> list = new ArrayList<ChartItem>();
 
@@ -81,10 +78,11 @@ public class ListViewMultiChartActivity extends DemoBase {
             if(i % 3 == 0) {
                 list.add(new LineChartItem(generateDataLine(i + 1), getApplicationContext()));
             } else if(i % 3 == 1) {
-                list.add(new BarChartItem(generateDataBar(i + 1), getApplicationContext()));
+
+//                list.add(new BarChartItem(generateDataBar(i + 1), getApplicationContext()));
             } else if(i % 3 == 2) {
-                pieChartItem=new PieChartItem(generateDataPie(i + 1), getApplicationContext());
-                list.add(pieChartItem);
+//                pieChartItem=new PieChartItem(generateDataPie(i + 1), getApplicationContext());
+//                list.add(pieChartItem);
             }
         }
 
@@ -115,21 +113,7 @@ public class ListViewMultiChartActivity extends DemoBase {
             return 3; // we have 3 different item-types
         }
     }
-    /* @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.pie, menu);
-        return true;
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId()==R.id.actionSave) {
-           PieChartItem map= (PieChartItem) lv.getItemAtPosition(2);
-            lv.getItemAtPosition(0);
-            saveToPath("title" + System.currentTimeMillis(), "");
-            Toast.makeText(getApplicationContext(), "d", Toast.LENGTH_SHORT).show();
-        }
-        return true;
-    }*/
+
     /**
      * generates a random ChartData object with just one DataSet
      *
@@ -146,26 +130,12 @@ public class ListViewMultiChartActivity extends DemoBase {
                 DbModel dbModel =db.selector(Acount.class).select("sum(figure) as sum")
                         .where("date", "like", date + (i + 1) + "月%").and("type", "=", 0)
                         .findFirst();
-//
-               /* int j = 0;
-                for (int t =0; t < acountList.size(); t++) {
-                     if(acountList.get(t).getFigure()>max)
-                        max=acountList.get(t).getFigure();
-                    j++;
-                }*/
-                /*while (cursor.moveToNext()) {
-                    values.add(new PointValue(j,Float.parseFloat(cursor.getString(1))));
-                    if(Float.parseFloat(cursor.getString(1))>max)
-                        max=Float.parseFloat(cursor.getString(1));
-                    j++;
-                }*/
                 if(dbModel.getDataMap().get("sum")!=null){
                     e1.add(new Entry(Float.parseFloat(dbModel.getDataMap().get("sum")), i));
                 }
             }catch (Throwable e){
 
             }
-            //e1.add(new Entry((int) (Math.random() * 65) + 40, i));
         }
 
         LineDataSet d1 = new LineDataSet(e1, "收入统计");
@@ -174,22 +144,9 @@ public class ListViewMultiChartActivity extends DemoBase {
         d1.setHighLightColor(Color.rgb(244, 117, 117));
         d1.setDrawValues(false);
         
-        /*ArrayList<Entry> e2 = new ArrayList<Entry>();
-        for (int i = 0; i < 12; i++) {
-            e2.add(new Entry(e1.get(i).getVal() - 30, i));
-        }*/
-
-        /*LineDataSet d2 = new LineDataSet(e2, "New DataSet " + cnt + ", (2)");
-        d2.setLineWidth(2.5f);
-        d2.setCircleSize(4.5f);
-        d2.setHighLightColor(Color.rgb(244, 117, 117));
-        d2.setColor(ColorTemplate.VORDIPLOM_COLORS[0]);
-        d2.setCircleColor(ColorTemplate.VORDIPLOM_COLORS[0]);
-        d2.setDrawValues(false);*/
 
         ArrayList<LineDataSet> sets = new ArrayList<LineDataSet>();
         sets.add(d1);
-        /*sets.add(d2);*/
 
         LineData cd = new LineData(getMonths(), sets);
         return cd;
@@ -213,18 +170,7 @@ public class ListViewMultiChartActivity extends DemoBase {
                         .where("date", "like", date + (i + 1) + "月%").and("type", "=", 1)
                         .findFirst();
 
-               /* int j = 0;
-                for (int t =0; t < acountList.size(); t++) {
-                     if(acountList.get(t).getFigure()>max)
-                        max=acountList.get(t).getFigure();
-                    j++;
-                }*/
-                /*while (cursor.moveToNext()) {
-                    values.add(new PointValue(j,Float.parseFloat(cursor.getString(1))));
-                    if(Float.parseFloat(cursor.getString(1))>max)
-                        max=Float.parseFloat(cursor.getString(1));
-                    j++;
-                }*/
+
                 if(dbModel.getDataMap().get("sum")!=null){
                     entries.add(new BarEntry(Float.parseFloat(dbModel.getDataMap().get("sum")), i));
                 }
@@ -258,13 +204,10 @@ public class ListViewMultiChartActivity extends DemoBase {
                     .select("sum(figure) as sum","category")
                     .groupBy("category").where("type","=",1)
                     .findAll();
-            /*if(dbModel.getDataMap().get("sum")!=null){
-                entries.add(new BarEntry(Float.parseFloat(dbModel.getDataMap().get("sum")), i));
-            }*/
+
             for (int i = 0; i < dbModels.size(); i++) {
                 entries.add(new Entry(Float.parseFloat(dbModels.get(i).getDataMap().get("sum")), i));
                 dataType.add(dbModels.get(i).getDataMap().get("category"));
-                //entries.add(new Entry((int) (Math.random() * 70) + 30, i));
             }
         }catch (Throwable e){
 
@@ -273,7 +216,6 @@ public class ListViewMultiChartActivity extends DemoBase {
 
         PieDataSet d = new PieDataSet(entries, "花费分布");
 
-        // space between slices
         d.setSliceSpace(2f);
         d.setColors(ColorTemplate.VORDIPLOM_COLORS);
 

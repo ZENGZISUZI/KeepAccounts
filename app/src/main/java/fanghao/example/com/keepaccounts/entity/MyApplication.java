@@ -6,7 +6,7 @@ import org.xutils.BuildConfig;
 import org.xutils.x;
 
 /**
- * Created by fanghao on 2015/12/10.
+ * Created by zeng on 2017/5/10.
  */
 public class MyApplication extends Application {
     @Override

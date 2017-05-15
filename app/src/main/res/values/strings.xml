@@ -33,4 +33,28 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!--add String for home-->
+    <string name="ahd_add_income">收入记帐 </string>
+    <string name="ahd_add_expense">支出记帐 </string>
+    <string name="ahd_add_cluster">随手记帐 </string>
+    <string name="ahd_today_account">今日账单 </string>
+    <string name="ahd_month_account">今月账单 </string>
+    <string name="ahd_year_account">今年账单 </string>
+    <string name="ahd_all_account">所有账单 </string>
+    <string name="ahd_all_account_view">账单视图 </string>
+    <string name="ahd_account">总额 </string>
+    <string name="ahd_about">关于</string>
+
+    <string name="income_type">收入类型</string>
+    <string name="income">收入</string>
+    <string name="expense_type">支出类型</string>
+    <string name="expense">支出</string>
+    <string name="daily">日常用品</string>
+    <string name="choose_date">选择日期</string>
+
+    <string name="loading_msg">初始化中，请稍后....</string>
+    <string name="launch_cpr">Copyright zengsu</string>
+
+    <string name="nhh_name">小曾子</string>
+    <string name="nhh_email">949391156@qq.com</string>
 </resources>

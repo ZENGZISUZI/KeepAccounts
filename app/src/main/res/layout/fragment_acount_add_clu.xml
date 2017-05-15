@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AcountAddFragment">
+    tools:context=".AcountAddCluFragment">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -57,31 +57,28 @@
                 android:hint="remarks" />
 
             <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/date"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true" />
-                </RelativeLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:gravity="right">
+                    android:layout_weight="1"
+                    android:gravity="left"
+                    android:layout_centerVertical="true" />
+
+
 
                     <Button
                         android:id="@+id/date_button"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="选择日期" />
-                </LinearLayout>
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text="@string/choose_date" />
+
 
             </LinearLayout>
 
@@ -98,7 +95,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
-                        android:text="一般消费" />
+                        android:text="@string/daily" />
                 </RelativeLayout>
 
                 <LinearLayout
@@ -110,12 +107,12 @@
                         android:id="@+id/category_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="收入类型" />
+                        android:text="@string/income_type" />
                     <Button
                         android:id="@+id/category_button2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="支出类型" />
+                        android:text="@string/expense_type" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -131,14 +128,14 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="收入" />
+                    android:text="@string/income" />
 
                 <Button
                     android:id="@+id/expense"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="支出" />
+                    android:text="@string/expense" />
             </LinearLayout>
 
 

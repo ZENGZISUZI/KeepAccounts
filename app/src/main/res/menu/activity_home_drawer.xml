@@ -1,28 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="single"
+        android:id="@+id/group1">
         <item
             android:id="@+id/nav_start"
-            android:title="开始记账" />
+            android:icon="@drawable/income_account"
+            android:title="@string/ahd_add_income" />
+        <item
+            android:id="@+id/nav_expense"
+            android:icon="@drawable/expense_account"
+            android:title="@string/ahd_add_expense" />
+        <item
+            android:id="@+id/nav_cluster"
+            android:icon="@drawable/cluster_account"
+            android:title="@string/ahd_add_cluster" />
+    </group>
+    <group android:checkableBehavior="single"
+        android:id="@+id/group2">
         <item
             android:id="@+id/nav_today"
-            android:title="今日账单" />
+            android:icon="@drawable/today_account"
+            android:title="@string/ahd_today_account" />
         <item
-            android:id="@+id/nav_allacount"
-            android:title="所有账单" />
+            android:id="@+id/nav_month"
+            android:icon="@drawable/month_account"
+            android:title="@string/ahd_month_account" />
+        <item
+            android:id="@+id/nav_year"
+            android:icon="@drawable/all_account"
+            android:title="@string/ahd_year_account" />
+    </group>
+    <group android:checkableBehavior="single"
+        android:id="@+id/group3">
+    <item
+        android:id="@+id/nav_all_account"
+        android:icon="@drawable/all_account"
+        android:title="@string/ahd_all_account" />
         <item
             android:id="@+id/nav_send"
-            android:title="记账统计" />
+            android:icon="@drawable/account_view"
+            android:title="@string/ahd_all_account_view" />
         <item
             android:id="@+id/nav_sum"
-            android:title="总额" />
+            android:icon="@drawable/total_account"
+            android:title="@string/ahd_account" />
+
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/abount"
+            android:title="@string/ahd_about" />
     </group>
-    <!--<item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-        </menu>
-    </item>-->
+
 </menu>

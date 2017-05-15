@@ -7,11 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-
 /**
- * Created by fanghao on 2015/12/20.
+ * Created by zeng on 2017/4/14.
  */
 public class BaseActivity extends AppCompatActivity {
     protected SystemBarTintManager mTintManager;

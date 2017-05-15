@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * Created by fanghao on 2015/12/20.
+ * Created by zeng on 2017/4/21.
  */
 public class StatusBarCompat
 {

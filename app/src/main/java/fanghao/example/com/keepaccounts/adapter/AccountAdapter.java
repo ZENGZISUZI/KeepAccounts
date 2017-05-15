@@ -2,7 +2,6 @@ package fanghao.example.com.keepaccounts.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,12 +14,12 @@ import fanghao.example.com.keepaccounts.R;
 import fanghao.example.com.keepaccounts.entity.Acount;
 
 /**
- * Created by fanghao on 2015/12/8.
+ * Created by zeng on 2017/5/8.
  */
-public class AcountAdapter extends ArrayAdapter<Acount> {
+public class AccountAdapter extends ArrayAdapter<Acount> {
     private int resourceId;
 
-    public AcountAdapter(Context context, int resource, List<Acount> objects) {
+    public AccountAdapter(Context context, int resource, List<Acount> objects) {
         super(context, resource, objects);
         resourceId = resource;
     }
@@ -37,6 +36,7 @@ public class AcountAdapter extends ArrayAdapter<Acount> {
             viewHolder.remarks = (TextView) view.findViewById(R.id.remarks);
             viewHolder.figure = (TextView) view.findViewById(R.id.figure);
             viewHolder.id=(TextView) view.findViewById(R.id.id);
+            viewHolder.category= (TextView) view.findViewById(R.id.category);
             view.setTag(viewHolder);
         } else {
             view = convertView;
@@ -63,5 +63,6 @@ public class AcountAdapter extends ArrayAdapter<Acount> {
         TextView remarks;
         TextView figure;
         TextView id;
+        TextView category;
     }
 }

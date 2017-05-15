@@ -1,11 +1,10 @@
 package fanghao.example.com.keepaccounts;
 
 import android.app.DatePickerDialog;
+import android.app.Fragment;
 import android.content.Context;
-import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -17,30 +16,27 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
 import org.xutils.DbManager;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import fanghao.example.com.keepaccounts.adapter.AcountAdapter;
+import fanghao.example.com.keepaccounts.adapter.AccountAdapter;
 import fanghao.example.com.keepaccounts.entity.Acount;
-import lecho.lib.hellocharts.model.PointValue;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link TodayAcountListFragment.OnFragmentInteractionListener} interface
+ * {@link AllAcountListFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link TodayAcountListFragment#newInstance} factory method to
+ * Use the {@link AllAcountListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TodayAcountListFragment extends BaseFragment {
+public class AllAcountListFragment extends BaseFragment {
     DbManager.DaoConfig daoConfig = new DbManager.DaoConfig()
             .setDbName("myAcounts")
                     //.setDbDir(new File("/data/data/fanghao.example.com.keepaccounts"))
@@ -56,9 +52,8 @@ public class TodayAcountListFragment extends BaseFragment {
             });
     @ViewInject(R.id.list_view)
     ListView listView;
-    AcountAdapter adapter;
+    AccountAdapter adapter;
     // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -68,14 +63,14 @@ public class TodayAcountListFragment extends BaseFragment {
 
     private OnFragmentInteractionListener mListener;
 
-    /*MyDatabasehelper myDatabasehelper;*/
-    public TodayAcountListFragment() {
-        // Required empty public constructor
+    public AllAcountListFragment() {
     }
     @ViewInject(R.id.begin_date)
     TextView begin_date;
     @ViewInject(R.id.end_date)
     TextView end_date;
+
+//筛选按钮
     @Event(R.id.begin_date_button)
     private void onBeginClick(View view) {
         Calendar c = Calendar.getInstance();
@@ -108,11 +103,11 @@ public class TodayAcountListFragment extends BaseFragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment TodayAcountListFragment.
+     * @return A new instance of fragment AllAcountListFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static TodayAcountListFragment newInstance(String param1, String param2) {
-        TodayAcountListFragment fragment = new TodayAcountListFragment();
+    public static AllAcountListFragment newInstance(String param1, String param2) {
+        AllAcountListFragment fragment = new AllAcountListFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -132,31 +127,16 @@ public class TodayAcountListFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_today_acount_list, null);
-       /* myDatabasehelper = new MyDatabasehelper(getActivity(), "myAccounts.db", null, 2);
-        Cursor cursor = myDatabasehelper.getReadableDatabase().rawQuery(
-                "select * from acounts order by date desc", null
-        );
+        View root = inflater.inflate(R.layout.fragment_all_acount_list, null);
 
 
-        List<Acount> acountList=new ArrayList(){};
-
-        while (cursor.moveToNext()) {
-            Acount acount = new Acount();
-            acount.setFigure(Float.parseFloat(cursor.getString(1)));
-            acount.setRemarks(cursor.getString(2));
-            acount.setCategory(cursor.getString(3));
-            acount.setDate(cursor.getString(4));
-            acount.setType(cursor.getString(5));
-            acountList.add(acount);
-        }*/
         try {
             DbManager db = x.getDb(daoConfig);
             List<Acount> acountList = db.selector(Acount.class).orderBy("_id",true).findAll();
-            adapter = new AcountAdapter(getActivity(), R.layout.acount_item, acountList);
+            adapter = new AccountAdapter(getActivity(), R.layout.acount_item, acountList);
             listView = (ListView) root.findViewById(R.id.list_view);
             listView.setAdapter(adapter);
+            //        长按进行删除或者更新操作
             listView.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
                 public void onCreateContextMenu(ContextMenu menu, View v,
                                                 ContextMenu.ContextMenuInfo menuInfo) {
@@ -172,30 +152,43 @@ public class TodayAcountListFragment extends BaseFragment {
     }
 
 
-
+//根据数据进行筛选
     public void generateData(String beginDate, String endDate) {
         List<Acount> acountList=null;
         try {
             DbManager db = x.getDb(daoConfig);
             if (!beginDate.equals("")) {
                 if (!endDate.equals("")) {
-                    acountList= db.selector(Acount.class).where("date","between",new String[]{begin_date.getText().toString(),end_date.getText().toString()}).orderBy("date",true).findAll();
+//                    选择开始和结束额日期的列表
+                    acountList= db.selector(Acount.class).where("date","between",
+                            new String[]{begin_date.getText().toString(),end_date.getText().toString()})
+                            .orderBy("date",true)
+                            .findAll();
                 } else {
-                    acountList= db.selector(Acount.class).where("date",">=",begin_date.getText().toString()).orderBy("date",true).findAll();
+//                    选择开始日期的列表
+                    acountList= db.selector(Acount.class).where("date",">=",begin_date.getText().toString())
+                            .orderBy("date",true)
+                            .findAll();
 
                 }
             } else {
+//                选择结束日期列表
                 if (!endDate.equals("")) {
-                    acountList= db.selector(Acount.class).where("date","<=",end_date.getText().toString()).orderBy("date",true).findAll();
+                    acountList= db.selector(Acount.class).where("date","<=",end_date.getText().toString())
+                            .orderBy("date",true)
+                            .findAll();
                 } else {
-                    acountList= db.selector(Acount.class).orderBy("date",true).findAll();
+//                    啥都没选列表
+                    acountList= db.selector(Acount.class)
+                            .orderBy("date",true)
+                            .findAll();
                 }
             }
         } catch (Throwable throwable) {
 
         }
 
-        adapter = new AcountAdapter(getActivity(), R.layout.acount_item, acountList);
+        adapter = new AccountAdapter(getActivity(), R.layout.acount_item, acountList);
         listView.setAdapter(adapter);
         listView.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
             public void onCreateContextMenu(ContextMenu menu, View v,
@@ -239,13 +232,15 @@ public class TodayAcountListFragment extends BaseFragment {
                 return super.onContextItemSelected(item);
         }
     }
-
+//更新操作
     private void updateDialog(int id) {
 
         getActivity().setTitle("修改");
         Bundle nBundle = new Bundle();
         nBundle.putInt("id", id);
+
         AcountUpdateFragment fragment = AcountUpdateFragment.getInstance(nBundle);
+//        ExpenseUpdateFragment fragment = ExpenseUpdateFragment.getInstance(nBundle);
         getActivity().getFragmentManager().beginTransaction()
                 .replace(R.id.container_home,fragment)
                 .addToBackStack(null)

@@ -4,7 +4,10 @@ import org.xutils.db.annotation.Column;
 import org.xutils.db.annotation.Table;
 
 /**
- * Created by fanghao on 2015/12/8.
+ * Created by zeng on 2017/5/8.
+ *
+ * @Table创建表的名字为acounts
+ * @Column列名
  */
 @Table(name = "acounts")
 public class Acount {

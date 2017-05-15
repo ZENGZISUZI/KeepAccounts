@@ -3,21 +3,16 @@ package fanghao.example.com.keepaccounts;
 import android.app.Fragment;
 import android.content.Context;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.xutils.DbManager;
-import org.xutils.db.sqlite.SqlInfoBuilder;
 import org.xutils.ex.DbException;
 import org.xutils.view.annotation.ContentView;
-import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import fanghao.example.com.keepaccounts.entity.Acount;
@@ -132,7 +127,8 @@ public class HomeFragment extends BaseFragment {
                     } while (cur.moveToNext());
                 }
             }
-            Sum=addSum+descSum;
+//            Sum=addSum+descSum;
+              Sum=addSum-descSum;
 
         } catch (Throwable e) {
             Acount acount=new Acount();
