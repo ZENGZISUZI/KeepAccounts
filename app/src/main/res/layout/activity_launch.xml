@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/launch1"
+    android:background="@drawable/launch_background"
     android:orientation="vertical">
 
      
@@ -14,7 +14,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:padding="12dip"
-        android:textColor="@color/white"
+        android:textColor="@color/back"
         android:text="@string/launch_cpr"
         android:textSize="11sp" />
 
@@ -35,7 +35,7 @@
                 <ImageView android:id="@+id/jay_studio_icon"
                     android:layout_width="210dip"
                     android:layout_height="230dip"
-                    android:src="@drawable/today_account"/>
+                    android:src="@drawable/launch"/>
 
 
             </RelativeLayout>
@@ -49,15 +49,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="6dip"
-                    android:textColor="@color/white"
-                    android:text="@string/app_name"
+                    android:textColor="@color/back"
+                    android:text="@string/app_name1"
                     android:textSize="24sp"/>
                 <TextView
                     android:id="@+id/version_name"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="bottom"
-                    android:textColor="@color/white"
+                    android:textColor="@color/back"
                     android:paddingBottom="6dip"
                     android:textSize="14sp"/>
             </LinearLayout>
@@ -71,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:padding="6dip"
-                android:textColor="@color/white"
+                android:textColor="@color/back"
                 android:text="@string/app_name"
                 android:textSize="13sp"/>
             <ProgressBar android:id="@+id/refresh_list_footer_progressbar"

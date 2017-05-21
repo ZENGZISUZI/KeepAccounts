@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/back_add"
     tools:context=".fragment.IncomeAddFragment">
 
     <LinearLayout
@@ -18,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@drawable/border">
+            android:background="@drawable/border1">
 
 
             <LinearLayout
@@ -35,6 +36,7 @@
                         android:layout_height="30dp"
                         android:layout_toLeftOf="@+id/figure"
                         android:gravity="center_vertical"
+                        android:textSize="20sp"
                         android:text="￥:" />
 
                     <EditText
@@ -44,7 +46,7 @@
                         android:layout_centerHorizontal="true"
                         android:background="#FFF"
                         android:gravity="center"
-                        android:hint="Enter amount"
+                        android:hint="@string/add_amount"
                         android:numeric="decimal" />
                 </RelativeLayout>
             </LinearLayout>
@@ -53,7 +55,8 @@
                 android:id="@+id/remarks"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:hint="remarks" />
+                android:paddingLeft="10dp"
+                android:hint="@string/add_remarks" />
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -62,10 +65,10 @@
 
                 <TextView
                     android:id="@+id/date"
+                    android:paddingLeft="10dp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="left"
                     android:layout_centerVertical="true" />
 
 
@@ -88,6 +91,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:textSize="20sp"
                         android:text="工资" />
                 </RelativeLayout>
 
@@ -100,6 +105,7 @@
                         android:id="@+id/category_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="20sp"
                         android:text="@string/income_type" />
                 </LinearLayout>
 
@@ -117,20 +123,13 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
+                    android:textSize="20sp"
                     android:text="@string/income" />
             </LinearLayout>
 
 
         </LinearLayout>
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/insert"
-                android:layout_alignParentBottom="true"/>
-        </RelativeLayout>
+
 
     </LinearLayout>
 

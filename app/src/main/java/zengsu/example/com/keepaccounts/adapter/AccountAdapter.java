@@ -46,6 +46,7 @@ public class AccountAdapter extends ArrayAdapter<Account> {
         viewHolder.date.setText(account.getDate());
 
         viewHolder.remarks.setText(account.getRemarks());
+        viewHolder.category.setText(account.getCategory());
 
         if (account.getType().equals("0")) {
             viewHolder.figure.setTextColor(Color.rgb(106, 168, 79));
