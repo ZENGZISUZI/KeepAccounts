@@ -8,5 +8,8 @@
 
     <color name="white">#ffffff</color>
     <color name="back">#8B7D6B</color>
+    <color name="blue">#1e88e5</color>
+    <color name="blue1">#80d8ff</color>
+    <color name="blue2">#1e88e5</color>
 
 </resources>

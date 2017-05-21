@@ -6,7 +6,7 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        applicationId "fanghao.example.com.keepaccounts"
+        applicationId "zengsu.example.com.keepaccounts"
         minSdkVersion 19
         targetSdkVersion 23
         versionCode 1
@@ -33,16 +33,13 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:support-v4:23.1.1'
     compile 'com.android.support:appcompat-v7:23.1.1'
-//butterknife添加依赖关系
-    compile 'com.jakewharton:butterknife:7.0.1'
 //    NavigationView在design库中添加依赖
     compile 'com.android.support:design:23.1.1'
-//    添加了数据图形化显示的第三方架包
+//    添加了数据图表库依赖
     compile 'com.github.lecho:hellocharts-library:1.5.8@aar'
-
-    compile 'org.xutils:xutils:3.1.12'
-
     compile 'com.github.PhilJay:MPAndroidChart:v2.1.6'
-//添加圆形头像依赖包
+//    添加xutils依赖对数据进行增删改查操作
+    compile 'org.xutils:xutils:3.1.12'
+//    添加圆形头像依赖包
     compile 'com.makeramen:roundedimageview:2.3.0'
 }

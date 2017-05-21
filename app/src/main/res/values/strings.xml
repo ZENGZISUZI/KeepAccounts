@@ -54,7 +54,17 @@
 
     <string name="loading_msg">初始化中，请稍后....</string>
     <string name="launch_cpr">Copyright zengsu</string>
+    
+    <!--登录注册-->
+    <string name="login_name">请输入用户名</string>
+    <string name="login_password">请输入密码</string>
+    <string name="login">登录</string>
+    <string name="register">注册</string>
+    <string name="register_re_password">请再次输入密码</string>
+    <string name="login_re_email">请输入邮箱</string>
+
 
     <string name="nhh_name">小曾子</string>
     <string name="nhh_email">949391156@qq.com</string>
+    <string name="quit">退出</string>
 </resources>
